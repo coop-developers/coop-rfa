@@ -9,35 +9,40 @@
 		<form ng-submit="submitForm()">
 			<!--TODO:Connect to DB-->
 			<!--RFA Choice-->
+			
 			<div class="form-group" ng-class="{ 'has-error' : rfatype }">
-				<div class="radio">
+				<div class="radio" ng-click="disable()">
 					<label><input type="radio" name="rfatype" value="0" ng-model="formData.rfatype">North Campus Maintenance</label>
 				</div>
-				<div class="radio">
+				<div class="radio" ng-click="disable()">
 					<label><input type="radio" name="rfatype" value="1" ng-model="formData.rfatype">ICC Maintenance</label>
+
 				</div>
-				<div class="radio">
+				<div class="radio" ng-click="disable()">
 					<label><input type="radio" name="rfatype" value="2" ng-model="formData.rfatype">North Campus Tech Team</label>
 				</div>
 				<span class="help-block" ng-show="errorrfatype">{{ errorrfatype }}</span>
 			</div>
 
-			<!--Descrip-->
-  			<div class="form-group" ng-class="{ 'has-error' : descrip }">
-				<label for="descrip">Description of problem and related details:</label> <br>
-				<textarea class="form-control" name ="descrip" rows="5" id="descrip" ng-model="formData.descrip"></textarea>
-				<span class="help-block" ng-show="errordescrip">{{ errordescrip }}</span>
-			</div>
+			
+			<fieldset ng-disabled="isDisabled">
+	  			<!--Descrip-->
+	  			<div class="form-group" ng-class="{ 'has-error' : descrip }">
+					<label for="descrip">Description of problem and related details:</label> <br>
+					<textarea class="form-control" name ="descrip" rows="5" id="descrip" ng-model="formData.descrip"></textarea>
+					<span class="help-block" ng-show="errordescrip">{{ errordescrip }}</span>
+				</div>
 
-			<!--Comments-->
-  			<div class="form-group">
-				<label for="comments">Comments:</label> <br>
-				<textarea class="form-control" name ="comments" rows="5" id="comments" ng-model="formData.comments"></textarea>
-			</div>
+				<!--Comments-->
+	  			<div class="form-group">
+					<label for="comments">Comments:</label> <br>
+					<textarea class="form-control" name ="comments" rows="5" id="comments" ng-model="formData.comments"></textarea>
+				</div>
 
-			<button type="submit" class="btn btn-success btn-lg btn-block">
-				<span class="glyphicon glyphicon-flash"></span> Submit!
-			</button>
+				<button type="submit" class="btn btn-success btn-lg btn-block">
+					<span class="glyphicon glyphicon-flash"></span> Submit!
+				</button>
+			</fieldset>
 		</form>
 
 		<pre>

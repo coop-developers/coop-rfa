@@ -20,7 +20,23 @@ rfa.controller('formController', formController);
 
 // define angular module/app
 function formController($scope, $http) {
+    //init
+    $scope.isDisabled = undefined;
     $scope.formData = {};
+    $rfatype = undefined;
+    
+    $scope.disable = function(){
+        //get selected type of rfa
+        $rfatype = $scope.formData.rfatype;
+        //if ICC's disable form and prompt user to URL
+        if($rfatype ==  1){
+            $scope.isDisabled = true;
+        }else{
+            $scope.isDisabled = false;
+        }
+        
+    }
+
     // process the form
     $scope.submitForm = function() {
         $http({
