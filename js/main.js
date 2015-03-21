@@ -8,6 +8,11 @@ rfa.config(['$routeProvider',
         $routeProvider.
         when('/queue', {
             templateUrl: 'pages/form.html',
+            resolve: {
+                is_logged_in: ['capi.ums', function(ums) {
+                    return ums.get_current_user();
+                }]
+            }
         })
         .otherwise({
             redirectTo: '/queue'
