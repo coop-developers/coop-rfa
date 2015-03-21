@@ -6,8 +6,9 @@ var rfa = angular.module(
 rfa.config(['$routeProvider',
     function($routeProvider) {
         $routeProvider.
-        when('/queue', {
+        when('/form', {
             templateUrl: 'pages/form.html',
+            controller: 'formController',
             resolve: {
                 current_user: ['capi.ums', function(ums) {
                     return ums.get_current_user();
@@ -23,7 +24,7 @@ rfa.config(['$routeProvider',
 rfa.controller('formController', formController);
 
 // define angular module/app
-function formController($scope, $http, current_user) {
+function formController($scope, $http, $location, current_user) {
     //init
     $scope.isDisabled = undefined;
     $scope.modalShown = undefined;
@@ -33,7 +34,7 @@ function formController($scope, $http, current_user) {
         //get selected type of rfa
         $rfatype = $scope.formData.rfatype;
         //if ICC's disable form and prompt user to URL
-        if($rfatype ==  2){
+        if($rfatype ==  3){
             $scope.isDisabled = true;
         }else{
             $scope.isDisabled = false;
@@ -50,14 +51,14 @@ function formController($scope, $http, current_user) {
             headers : { 'Content-Type': 'application/x-www-form-urlencoded' }  // set the headers so angular passing info as form data (not request payload)
         })
             .success(function(data) {
-                console.log(data);
+                //console.log(data);
                 if (!data.success) {
-                    // if not successful, bind errors to error variables
+                    // if not successful, bind errors to error variables for validation
                     $scope.errorrfatype = data.errors.rfatype;
                     $scope.errordescrip = data.errors.descrip;
-                } else {
-                    // if successful, bind success message to message
-                    $scope.message = data.message;
+                } else {                  
+                    // if successful, send to database, comeback and redirect
+                    $location.path('/queue')
                 }
             });
     };
