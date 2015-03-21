@@ -9,7 +9,7 @@ rfa.config(['$routeProvider',
         when('/queue', {
             templateUrl: 'pages/form.html',
             resolve: {
-                is_logged_in: ['capi.ums', function(ums) {
+                current_user: ['capi.ums', function(ums) {
                     return ums.get_current_user();
                 }]
             }
@@ -23,7 +23,7 @@ rfa.config(['$routeProvider',
 rfa.controller('formController', formController);
 
 // define angular module/app
-function formController($scope, $http) {
+function formController($scope, $http, current_user) {
     //init
     $scope.isDisabled = undefined;
     $scope.modalShown = undefined;
