@@ -1,6 +1,6 @@
 var rfa = angular.module(
     'RFA',
-    ['ngRoute']
+    ['ngRoute', 'capi']
 );
 
 rfa.config(['$routeProvider',
