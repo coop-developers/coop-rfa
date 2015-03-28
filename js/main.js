@@ -71,3 +71,7 @@ function formController($scope, $http, $location, current_user) {
     };
 }
 
+rfa.controller('QueueController', ['$scope', '$http', '$location', 'current_user', '$resource',
+    function($scope, $http, $location, current_user, $resource) {
+    }]
+);
