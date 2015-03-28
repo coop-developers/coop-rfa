@@ -3,17 +3,24 @@ var rfa = angular.module(
     ['ngRoute', 'capi']
 );
 
+LOGIN_RESOLVER = {
+    current_user: ['capi.ums', function(ums) {
+        return ums.get_current_user();
+    }]
+};
+
 rfa.config(['$routeProvider',
     function($routeProvider) {
         $routeProvider.
         when('/form', {
             templateUrl: 'pages/form.html',
             controller: 'formController',
-            resolve: {
-                current_user: ['capi.ums', function(ums) {
-                    return ums.get_current_user();
-                }]
-            }
+            resolve: LOGIN_RESOLVER
+        })
+        .when('/queue', {
+            templateUrl: 'pages/queue.html',
+            controller: 'QueueController',
+            resolve: LOGIN_RESOLVER
         })
         .otherwise({
             redirectTo: '/queue'
