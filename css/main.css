@@ -6,3 +6,15 @@ body {
   text-align: center;
 }
 
+/* imported from hfans/main.css */
+.green-colored {
+	background-color: #50b040;
+	margin: 5px 0px;
+	padding: 5px;
+	border-radius: 10px;
+}
+.inner{
+	text-align: center;
+	
+	color: #e8e8e8;
+}
