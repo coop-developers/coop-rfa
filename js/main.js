@@ -73,5 +73,8 @@ function formController($scope, $http, $location, current_user) {
 
 rfa.controller('QueueController', ['$scope', '$http', '$location', 'current_user', '$resource',
     function($scope, $http, $location, current_user, $resource) {
+        //test code I don't know if this will work
+        //var Queue_resource = resource('https://escher.icc.coop/dev/api/0.1/rfa/queue.php');
+        //$scope.queues = Queue_resource.query();
     }]
 );
