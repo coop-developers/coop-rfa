@@ -22,6 +22,11 @@ rfa.config(['$routeProvider',
             controller: 'QueueController',
             resolve: LOGIN_RESOLVER
         })
+        .when('/queue/:id', {
+            templateUrl: 'pages/details.html',
+            controller: 'DetailsController',
+            resolve: LOGIN_RESOLVER
+        })
         .otherwise({
             redirectTo: '/queue'
         });
@@ -77,4 +82,12 @@ rfa.controller('QueueController', ['$scope', '$http', '$location', 'current_user
         var Queue = $resource('~/rfa/queue!');
         $scope.queues = Queue.query();
     }]
+);
+
+rfa.controller('DetailsController', ['$scope', '$http', '$location', 'current_user', '$resource',
+    function($scope, $http, $location, current_user, $resource) {
+        var Detail = $resource(); // add url when api is up
+        $scope.comments = Detail.query();
+    }]
+
 );
