@@ -4,9 +4,22 @@
 <div class="md-col-10">
 	<!-- header -->
 	<div class="panel panel-default">
-		<div class="panel-body">Basic panel example</div>
+		<div class="panel-body">
+			<div>{{rfa_entry.full_name}}</div>
+			<div>{{rfa_entry.description}}</div>
+			<div>{{rfa_entry.current_status}}</div>
+			<!--<div>{{rfa_entry.time_submited}}</div>			-->
+		</div>
 	</div>
 	<!-- repeating data -->
-	<div class="md-col-12" ng-repeat="comment in comments"></div>
+	<div ng-repeat="comment in comments">
+	<div class="panel panel-default" >
+		<div class="panel-heading">
+			<div>{{comment.full_name}}</div>
+			<div>{{comment.time}}</div>
+		</div>
+		<div class="panel-body">{{comment.comment}}</div>
+	</div>
+	</div>
 </div>	
 </div>

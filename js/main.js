@@ -88,6 +88,7 @@ rfa.controller('DetailsController', ['$scope', '$http', '$location', 'current_us
     function($scope, $http, $location, current_user, $resource, $routeParams) {
         var Detail = $resource('~/rfa/queue!?id=:id', {'id': '@id'});  // add url when api is up
         $scope.rfa_entry = Detail.get({id: $routeParams.id});
+        $scope.comments = $scope.rfa_entry.comments;
         $scope.rfa_id = $routeParams.id;
     }]
 
