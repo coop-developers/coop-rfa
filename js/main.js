@@ -45,6 +45,10 @@ rfa.controller('menuController', ['$scope', '$location', '$rootScope',
         $scope.href = $location.path();
         $rootScope.$on('$locationChangeSuccess', function(event) {
             $scope.href = $location.path();
+            if ($('#navbar').hasClass('in')) {
+                $(".btn-navbar").click(); //bootstrap 2.x
+                $(".navbar-toggle").click() //bootstrap 3.x by Richard
+            }
         });
     }
 ]);
