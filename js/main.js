@@ -1,6 +1,6 @@
 var rfa = angular.module(
     'RFA',
-    ['ngRoute', 'capi']
+    ['ngRoute', 'capi', 'hc.marked']
 );
 
 LOGIN_RESOLVER = {
@@ -9,8 +9,8 @@ LOGIN_RESOLVER = {
     }]
 };
 
-rfa.config(['$routeProvider',
-    function($routeProvider) {
+rfa.config(['$routeProvider', 'markedProvider',
+    function($routeProvider, markedProvider) {
         $routeProvider.
         when('/form', {
             templateUrl: 'pages/form.html',
@@ -29,6 +29,13 @@ rfa.config(['$routeProvider',
         })
         .otherwise({
             redirectTo: '/queue'
+        });
+
+        markedProvider.setOptions({
+            gfm: true,
+            sanitize: true,
+            table: true,
+            smartypants: true
         });
     }]
 );
@@ -93,3 +100,14 @@ rfa.controller('DetailsController', ['$scope', '$http', '$location', 'current_us
     }]
 
 );
+
+rfa.filter('rfa_status', function() {
+    var status_table = {
+        0: 'submitted',
+        1: 'in-progress',
+        2: 'waiting'
+    };
+    return function(value) {
+        return status_table[value];
+    };
+});

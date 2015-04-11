@@ -1,24 +1,22 @@
-<div class="container-fluid">
-	<h1>Details for {{rfa_id}}</h1>
-<div class="md-col-1"></div>
+<div class="page-header">
+    <h1>RFA #{{rfa_entry.id}} {{rfa_entry.description}}</h1>
+</div>
 <div class="md-col-10">
 	<!-- header -->
-	<div class="panel panel-default">
-		<div class="panel-body">
-			<div>{{rfa_entry.full_name}}</div>
-			<div>{{rfa_entry.description}}</div>
-			<div>{{rfa_entry.current_status}}</div>
-			<div>{{rfa_entry.time_submited|date:'short'}}</div>
-		</div>
-	</div>
+    <div style="color: #999">
+        <span style="margin-right: 0.5em;">{{rfa_entry.full_name}}</span>
+        <span style="margin-right: 0.5em;">{{rfa_entry.current_status | rfa_status}}</span>
+        <span style="margin-right: 0.5em;">{{rfa_entry.time_submited|date:'short'}}</span>
+    </div>
 	<!-- repeating data -->
 	<div ng-repeat="comment in rfa_entry.comments">
 	<div class="panel panel-default" >
-		<div class="panel-heading">
+		<div class="panel-heading" ng-if="$index != 0">
 			<div>{{comment.full_name}}</div>
 			<div>{{comment.time | date:'short'}}</div>
 		</div>
-		<div class="panel-body">{{comment.comment}}</div>
+        <div class="panel-body" marked="comment.comment">
+        </div>
 	</div>
 	</div>
 </div>	

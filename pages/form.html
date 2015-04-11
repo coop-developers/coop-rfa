@@ -31,13 +31,13 @@
 	  			<!--Descrip-->
 	  			<div class="form-group" ng-class="{ 'has-error' : descrip }">
 					<label for="descrip">Description of problem and related details:</label> <br>
-					<textarea class="form-control" name ="descrip" rows="5" id="descrip" ng-model="formData.descrip"></textarea>
+					<input class="form-control" type="text" name="descrip" id="descrip" ng-model="formData.descrip">
 					<span class="help-block" ng-show="errordescrip">{{ errordescrip }}</span>
 				</div>
 
 				<!--Comments-->
 	  			<div class="form-group">
-					<label for="comments">Comments:</label> <br>
+					<label for="comments">Details:</label> <br>
 					<textarea class="form-control" name ="comments" rows="5" id="comments" ng-model="formData.comments"></textarea>
 				</div>
 

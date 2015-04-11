@@ -13,11 +13,11 @@
             <li class='green-colored'> 
                 <div class='col-md-1 inner'>{{queue.id}}</div>
                 <div class='col-md-1'></div>
-                <div class='col-md-3 inner'>{{queue.full_name}}</div>
+                <div class='col-md-2 inner'>{{queue.full_name}}</div>
                 <div class='col-md-1'></div>
-                <div class='col-md-3 inner'>{{queue.description}}</div>
-                &nbsp
-                <!-- <div class='col-md-2 inner'>{{Date(queue.time_submited) }}</div> -->
+                <div class='col-md-4 inner'>{{queue.description}}</div>
+                <div class='col-md-2 inner'>{{ queue.time_submited | date:'short' }}</div>
+                &nbsp;
             </li>
         </a>
 		<li><h3>In Progress</h3></li>
