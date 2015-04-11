@@ -8,7 +8,7 @@
 			<div>{{rfa_entry.full_name}}</div>
 			<div>{{rfa_entry.description}}</div>
 			<div>{{rfa_entry.current_status}}</div>
-			<!--<div>{{rfa_entry.time_submited}}</div>			-->
+			<div>{{rfa_entry.time_submited|date:'short'}}</div>
 		</div>
 	</div>
 	<!-- repeating data -->
@@ -16,7 +16,7 @@
 	<div class="panel panel-default" >
 		<div class="panel-heading">
 			<div>{{comment.full_name}}</div>
-			<div>{{comment.time}}</div>
+			<div>{{comment.time | date:'short'}}</div>
 		</div>
 		<div class="panel-body">{{comment.comment}}</div>
 	</div>
