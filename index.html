@@ -39,11 +39,10 @@
           </button>
           <div class="navbar-brand" href="#">RFA</div>
         </div>
-        <div id="navbar" class="collapse navbar-collapse">
+        <div id="navbar" class="collapse navbar-collapse" ng-controller="menuController">
           <ul class="nav navbar-nav">
-            <!--<li class="active"><a href="#">Home</a></li>-->
-            <li><a href="#form">Submit an RFA</a></li>
-            <li><a href="#queue">RFA Queue</a></li>
+              <li class="{{ href == '/form' ? 'active': '' }} "><a href="#form">Submit an RFA</a></li>
+            <li class="{{ href.indexOf('/queue') != -1 ? 'active': '' }} "><a href="#queue">RFA Queue</a></li>
           </ul>
           <ul class="nav navbar-nav navbar-right">
               <li><a href="../coop-users/#/logout">Logout</a></li>

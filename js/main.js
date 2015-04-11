@@ -40,6 +40,15 @@ rfa.config(['$routeProvider', 'markedProvider',
     }]
 );
 
+rfa.controller('menuController', ['$scope', '$location', '$rootScope',
+    function ($scope, $location, $rootScope) {
+        $scope.href = $location.path();
+        $rootScope.$on('$locationChangeSuccess', function(event) {
+            $scope.href = $location.path();
+        });
+    }
+]);
+
 rfa.controller('formController', formController);
 
 // define angular module/app
