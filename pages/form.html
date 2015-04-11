@@ -1,11 +1,9 @@
 <div class="container-fluid">
 	<h1> RFA Form </h1>
-	<div class="row">
-	    <div class="col-md-3">
-	        <img src="http://www.icc.coop/images/index_top_left_logo1.png" alt="" style="padding-left: 1em">
-	    </div>
-	</div>
-	<div class="col-md-4 col-md-offset-4">
+    <div class="col-md-2">
+        <img src="http://www.icc.coop/images/index_top_left_logo1.png" alt="" style="padding-left: 1em">
+    </div>
+	<div class="col-md-5 col-md-offset-1">
 		<button type="button" class="btn btn-link btn-xs" data-toggle="modal" data-target="#helpModal">
   			Need help?
 		</button>
@@ -31,14 +29,15 @@
 	  			<!--Descrip-->
 	  			<div class="form-group" ng-class="{ 'has-error' : descrip }">
 					<label for="descrip">Description of problem and related details:</label> <br>
-					<input class="form-control" type="text" name="descrip" id="descrip" ng-model="formData.descrip">
+					<input class="form-control" type="text" class="form-control" name="descrip" id="descrip" ng-model="formData.descrip">
 					<span class="help-block" ng-show="errordescrip">{{ errordescrip }}</span>
 				</div>
 
 				<!--Comments-->
 	  			<div class="form-group">
 					<label for="comments">Details:</label> <br>
-					<textarea class="form-control" name ="comments" rows="5" id="comments" ng-model="formData.comments"></textarea>
+					<textarea class="form-control" name="comments" class="form-control" rows="8" id="comments" ng-model="formData.comments"></textarea>
+                    <div class="pull-right" ng-if="formData.comments && !showing_preview"><a href="javascript:void(0)" ng-click="show_preview()">Show preview →</a></div>
 				</div>
 
 				<button type="submit" class="btn btn-success btn-lg btn-block">
@@ -52,6 +51,15 @@
 		</pre>-->
 
 	</div>
+    <div class="col-md-4" ng-if="showing_preview">
+        <h3>Preview</h3>
+        <h4>{{ formData.descrip }}</h4>
+        <div class="panel panel-default" ng-if="formData.comments">
+            <div class="panel-body">
+                <div marked="formData.comments"></div>
+            </div>
+        </div>
+    </div>
 </div>
 
 <!--Modal for ICC redirect-->

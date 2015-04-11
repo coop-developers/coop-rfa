@@ -57,6 +57,11 @@ function formController($scope, $http, $location, current_user) {
     $scope.isDisabled = undefined;
     $scope.modalShown = undefined;
     $scope.formData = {};
+    $scope.showing_preview = false;
+
+    $scope.show_preview = function() {
+        $scope.showing_preview = true;
+    };
 
     $scope.disable = function(){
         //get selected type of rfa
